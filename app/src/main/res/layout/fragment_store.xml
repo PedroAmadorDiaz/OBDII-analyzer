@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:windowSoftInputMode="adjustResize"
+              tools:context="es.bitaria.obdii_analyzer.Store"
+              android:weightSum="10"
+              android:padding="10dp">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:id="@+id/fileListView">
+
+    </ListView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:hint="@string/file_name_required"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:text="@string/record"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btRecord"
+            android:layout_weight="2"
+            android:enabled="true"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@android:color/background_light"
+            />
+
+        <TextView
+            android:text="0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textLeftTime"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

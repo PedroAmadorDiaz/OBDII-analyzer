@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OBDII-analyzer</string>
+    <string name="high">alta</string>
+    <string name="location_accuracy">Precisión GPS</string>
+    <string name="low">baja</string>
+    <string name="mean">media</string>
+    <string name="str_en">Ingles</string>
+    <string name="str_es">Español</string>
+    <string name="record">grabar</string>
+    <string name="recording">Grabando</string>
+    <string name="stop">parar</string>
+    <string name="file_name">Nombre del archivo</string>
+    <string name="paired_devides">Dispositivos emparejados</string>
+    <string name="choose_sensors">Elige un sensor</string>
+    <string name="file_name_required">Se requiere nombre de archivo</string>
+    <string name="action_settings">Configuraciones</string>
+    <string name="navigation_drawer_close">Cerrar navigation drawer</string>
+    <string name="navigation_drawer_open">Abrir navigation drawer</string>
+    <string name="charts">Gráficas</string>
+    <string name="kinetic">Cinematica</string>
+    <string name="location">Localización</string>
+    <string name="obd2">OBDII</string>
+    <string name="exit">Salir</string>
+    <string name="home">Inicio</string>
+    <string name="store">Almacenamiento</string>
+    <string name="hello_blank_fragment">Hola fragment en blanco</string>
+    <string name="bluetooth_obd_connection">Conexión OBD bluetooth</string>
+    <string name="wifi_obd_connection">Conexión OBD WIFI</string>
+    <string name="bluetooth_actived">El bluetooth ha sido activado</string>
+    <string name="bluetooth_defuse">El bluetooth no ha sido activado</string>
+    <string name="not_bluetooth_support">El dispositivo no es compatible con Bluetooth</string>
+    <string name="no_paired_device">No se han encontrado dispositivos emparejados</string>
+    <string name="not_connected">No conectado</string>
+    <string name="connecting">Conectando</string>
+    <string name="connected">Conectado</string>
+    <string name="connected_to">Conectado a</string>
+    <string name="unable_to_connect_device">No se puede conectar el dispositivo</string>
+    <string name="device_connection_was_lost">Se ha perdido la conexión del dispositivo</string>
+    <string name="chart1_content">Contenido gráfica 1</string>
+    <string name="chart2_content">Contenido gráfica 2</string>
+    <string name="chart3_content">Contenido gráfica 3</string>
+    <string name="chart4_content">Contenido gráfica 4</string>
+
+</resources>

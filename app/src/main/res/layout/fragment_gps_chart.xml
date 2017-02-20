@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="10"
+             tools:context="es.bitaria.obdii_analyzer.LocationChart">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:divider="@color/colorPrimaryDark"
+                    android:dividerHeight="2px"
+                    android:id="@+id/gpsListView"/>
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:id="@+id/lineChart0">
+
+        </com.github.mikephil.charting.charts.LineChart>
+
+</LinearLayout>

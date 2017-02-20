@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:weightSum="10"
+              android:padding="10dp"
+              android:layout_height="70dp">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/textPIDname"
+        android:layout_weight="2.5"
+        tools:text="Engine coolant temperature"
+        android:gravity="left|center_vertical"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/textPIDvalue"
+        android:layout_weight="5"
+        android:gravity="center_vertical|center_horizontal"
+        tools:text="0.0"
+        android:textSize="30sp"
+        />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/textPIDunit"
+        android:layout_weight="2.5"
+        android:gravity="right|center_vertical"
+        tools:text="ºC"
+        android:textSize="14sp"/>
+</LinearLayout>

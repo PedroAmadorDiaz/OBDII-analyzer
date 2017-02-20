@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:weightSum="13"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="32dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/textView6"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/chart1_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/chart1_content"
+        android:layout_weight="1"
+        android:gravity="bottom"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/spChart0"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/textView7"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/chart2_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/chart2_content"
+        android:layout_weight="1"
+        android:gravity="bottom"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/spChart1"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/textView8"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/chart3_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/chart3_content"
+        android:layout_weight="1"
+        android:gravity="bottom"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/spChart2"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/textView9"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:text="@string/chart4_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/chart4_content"
+        android:layout_weight="1"
+        android:gravity="bottom"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/spChart3"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/textView10"
+        android:layout_weight="1"/>
+</LinearLayout>

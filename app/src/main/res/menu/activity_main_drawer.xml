@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/nav_obd2"
+            android:icon="@drawable/ic_menu_car"
+            android:title="@string/obd2"/>
+        <item
+            android:id="@+id/nav_kinetic"
+            android:icon="@drawable/ic_menu_3d_rotation"
+            android:title="@string/kinetic"/>
+    <item
+        android:id="@+id/nav_location"
+        android:icon="@drawable/ic_menu_place"
+        android:title="@string/location"/>
+    <item
+        android:id="@+id/nav_store"
+        android:icon="@drawable/ic_menu_sd_storage"
+        android:title="@string/store"/>
+</menu>
+

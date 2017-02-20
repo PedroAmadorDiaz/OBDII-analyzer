@@ -395,7 +395,13 @@ public class OBD extends Thread{
         // Si estamos conectados al dispositivo escaner OBD, nos desconectamos
         if (mWifiService.getState() ==  Constants.STATE_CONNECTED){
             mWifiService.stop();
+            mWifiService.cancel(true);
             return;
         }
+
+        mWifiService = new WifiService(mContext, handler);
+        mWifiService.execute();
+
+
     }
 }

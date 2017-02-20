@@ -91,7 +91,6 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
      * Start the ConnectedThread to begin managing a Bluetooth connection
      */
     public synchronized void onPostExecute(Void result) {
-
         if(socket == null) // Si no se ha podido crear el socked salimos del proceso de conexion
             return;
 
@@ -174,8 +173,8 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
 
             // Get the BluetoothSocket input and output streams
             try {
-                tmpIn = socket.getInputStream();
-                tmpOut = socket.getOutputStream();
+                tmpIn = mmSocket.getInputStream();
+                tmpOut = mmSocket.getOutputStream();
             } catch (IOException e) {
                 Log.e(TAG, "temp sockets not created", e);
             }

@@ -176,7 +176,23 @@ public class SQLite extends Thread {
         mSQLiteDB = new SQLiteDB(mContext,globalVariable.playFileName,null, VERSION);
         mDb = mSQLiteDB.getWritableDatabase();
 
-        // Leemos de la base de datos y metemos los valores en la grafica 0 de localizacion
+        // Leemos de la base de datos y metemos los valores en la grafica del OBD
+        for(int index = 0; index < globalVariable.mPIDs.size();index++){
+            if(globalVariable.mPIDs.get(index).selected == true){
+                String columns[] ={globalVariable.mPIDs.get(index).sqlName};
+                Cursor cursor = mDb.query("obd", columns,null, null, null, null, null );
+
+                if(cursor.moveToFirst()){
+                    do{
+                        globalVariable.mOBDxAXES0.add(String.valueOf(globalVariable.mOBDxValue0));
+                        globalVariable.mOBDyAXES0.add(new Entry(cursor.getFloat(0), globalVariable.mOBDxValue0));
+                        ++globalVariable.mOBDxValue0; // Aumentamos en una unidad el eje x pues ha entrado uns nueva serie de valores y
+                    } while(cursor.moveToNext());
+                }
+            }
+        }
+
+        // Leemos de la base de datos y metemos los valores en la grafica de localizacion
         for(int index = 0; index < globalVariable.mGPSs.size();index++){
             if(globalVariable.mGPSs.get(index).selected == true){
                 String columns[] ={globalVariable.mGPSs.get(index).sqlName};

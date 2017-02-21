@@ -74,13 +74,13 @@ public class GlobalClass {
             instance = new GlobalClass(context);
 
             // Definimos los PIDs con los que va a trabajar la aplicacion y si van ha ser mostrados inicialmente
-            mPIDs.add(new PID("04","Calculated engine load",(float)0.0,"%", false));      // (A/255)*100
-            mPIDs.add(new PID("05","Engine coolant temperature",(float)0.0,"ºC", false)); // A-40
-            mPIDs.add(new PID("0B","Intake manifold Absolute",(float)0.0,"kPa", false));  // A
-            mPIDs.add(new PID("0C","RPM",(float)0.0,"r/min", true));                      // ((A*256)+B)/4
-            mPIDs.add(new PID("0D","Speed",(float)0.0,"km/h", false));                    // A
-            mPIDs.add(new PID("0E","Ignition timing advance",(float)0.0,"º", false));     // (A-128)/2
-            mPIDs.add(new PID("11","Throttle position",(float)0.0,"%", false));           // (A/255)*100
+            mPIDs.add(new PID("04","Calculated engine load", "engine_load", (float)0.0,"%", false));      // (A/255)*100
+            mPIDs.add(new PID("05","Engine coolant temperature", "engine_temperature",(float)0.0,"ºC", false)); // A-40
+            mPIDs.add(new PID("0B","Intake manifold Absolute", "intake_manifold", (float)0.0,"kPa", false));  // A
+            mPIDs.add(new PID("0C","RPM", "engine_speed", (float)0.0,"r/min", true));                      // ((A*256)+B)/4
+            mPIDs.add(new PID("0D","Speed", "vehicle_speed", (float)0.0,"km/h", false));                    // A
+            mPIDs.add(new PID("0E","Ignition timing advance","ignition_advance", (float)0.0,"º", false));     // (A-128)/2
+            mPIDs.add(new PID("11","Throttle position", "throttle_position", (float)0.0,"%", false));           // (A/255)*100
 
             mIMUs.add(new IMU("X Acceleration", "acceleration_x", (float)0.0, 0)); // -1 ninguna grafica asignada
             mIMUs.add(new IMU("Y Acceleration","acceleration_y", (float)0.0, 1));

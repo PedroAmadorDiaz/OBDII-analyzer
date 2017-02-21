@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -70,6 +72,10 @@ public class FilesAdapter extends BaseAdapter {
             holder.btDelete.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
+                    View parentRow = (View) v.getParent();
+                    ListView listView = (ListView) parentRow.getParent();
+                    final int position = listView.getPositionForView(parentRow);
+
                     String dir = Environment.getExternalStorageDirectory().getPath()+"/OBDII-analyzer/";
                     File file = new File(dir, mFileDataList.get(position).name);
                     file.delete();
@@ -83,6 +89,10 @@ public class FilesAdapter extends BaseAdapter {
             holder.btPlay.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
+                    View parentRow = (View) v.getParent();
+                    ListView listView = (ListView) parentRow.getParent();
+                    final int position = listView.getPositionForView(parentRow);
+
                     String dir = Environment.getExternalStorageDirectory().getPath()+"/OBDII-analyzer/";
                     globalVariable.playFileName = dir + mFileDataList.get(position).name;
                     globalVariable.replay = true; // Pasamos al modo replay para que no entren nuevos datos en las graficas

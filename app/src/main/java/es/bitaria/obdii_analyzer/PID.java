@@ -7,6 +7,7 @@ package es.bitaria.obdii_analyzer;
 public class PID {
     public String id;
     public String name;
+    public String sqlName;
     public float value;
     public String unit;
     public boolean selected;
@@ -15,9 +16,10 @@ public class PID {
         super();
     }
 
-    public PID (String id, String name, float value, String unit, boolean selected){
+    public PID (String id, String name, String sqlName, float value, String unit, boolean selected){
         this.id = id;
         this.name = name;
+        this.sqlName = sqlName;
         this.value = value;
         this.unit = unit;
         this.selected = selected;

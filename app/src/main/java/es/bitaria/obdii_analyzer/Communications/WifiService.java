@@ -1,3 +1,17 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package es.bitaria.obdii_analyzer.Communications;
 
 import android.content.Context;
@@ -15,7 +29,7 @@ import java.net.Socket;
 import es.bitaria.obdii_analyzer.R;
 
 /**
- * Created by Pedro Amador Diaz el 19/02/2017.
+ * Creado por Pedro Amador Diaz el 19/02/2017.
  */
 
 public class WifiService extends AsyncTask<Void, Void, Void>{
@@ -39,10 +53,10 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
     public static final int STATE_PROTOCOL =5;
 
     /**
-     * Constructor. Prepares a new BluetoothChat session.
+     * Constructor. Prepara una nueva conexion wifi
      *
-     * @param context The UI Activity Context
-     * @param handler A Handler to send messages back to the UI Activity
+     * @param context UI Activity Context
+     * @param handler un Handler al que mandar mensajes hacia la UI Activity
      */
     public WifiService(Context context, Handler handler) {
         mState = STATE_NONE;
@@ -50,6 +64,7 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
         this.mContext = context;
     }
 
+    // Creacion del socket de comunicacion wifi con los parametros almacenados en la memoria premamente SharedPreferences
     @Override
     protected Void doInBackground(Void... params) {
         try {
@@ -68,9 +83,8 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
     }
 
     /**
-     * Set the current state of the chat connection
-     *
-     * @param state An integer defining the current connection state
+     * Establece el estado actual de la conexion wifi
+     * @param state Entero que define el actual estado de la conexion
      */
     private synchronized void setState(int state) {
         Log.d(TAG, "setState() " + mState + " -> " + state);
@@ -81,14 +95,15 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
     }
 
     /**
-     * Return the current connection state.
+     * Returna el actual estado de la conexion
      */
     public synchronized int getState() {
         return mState;
     }
 
     /**
-     * Start the ConnectedThread to begin managing a Bluetooth connection
+     * Comienza el hilo encargado de la comunicacion wifi pasandole como parametro
+     * el socket creado previmente
      */
     public synchronized void onPostExecute(Void result) {
         if(socket == null) // Si no se ha podido crear el socked salimos del proceso de conexion
@@ -96,10 +111,10 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
 
         Log.d(TAG, "Wifi connected");
 
-        // Start the thread to manage the connection and perform transmissions
+        // Inicie el hilo para administrar la conexión y realizar transmisiones
         mConnectedThread = new WifiService.ConnectedThread(socket);
 
-        // Send the name of the connected device back to the UI Activity
+        // Envíe el nombre del dispositivo conectado a la actividad de la interfaz de usuario
         Message msg = mHandler.obtainMessage(Constants.MESSAGE_DEVICE_NAME);
         Bundle bundle = new Bundle();
         bundle.putString(Constants.DEVICE_NAME, "Wifi");
@@ -110,7 +125,7 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
     }
 
     /**
-     * Stop all threads
+     * Para todos los hilos
      */
     public synchronized void stop() {
         Log.d(TAG, "stop");
@@ -124,28 +139,26 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
     }
 
     /**
-     * Write to the ConnectedThread in an unsynchronized manner
-     *
-     * @param out The bytes to write
-     * @see BluetoothChatService.ConnectedThread#write(byte[])
+     * Escribir al hilo de conexion de una manera no sincronizada
+     * @param out os bytes a escribir
      */
     public void write(byte[] out) {
-        // Create temporary object
+        // Crear objeto temporal
         WifiService.ConnectedThread r;
-        // Synchronize a copy of the ConnectedThread
+        // Sincronizar una copia del hilo de conexion
         synchronized (this) {
             if (mState != STATE_CONNECTED) return;
             r = mConnectedThread;
         }
-        // Perform the write unsynchronized
+        // Realizar la escritura sin sincronizar
         r.write(out);
     }
 
     /**
-     * Indicate that the connection was lost and notify the UI Activity.
+     * Indica que la conexión se ha perdido y notifica la actividad de la UI.
      */
     private void connectionLost() {
-        // Send a failure message back to the Activity
+        // Manda el mensaje de desconexion al UI Activity
         Message msg = mHandler.obtainMessage(Constants.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
         bundle.putString(Constants.TOAST, mContext.getString(R.string.device_connection_was_lost));
@@ -157,8 +170,8 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
     }
 
     /**
-     * This thread runs during a connection with a remote device.
-     * It handles all incoming and outgoing transmissions.
+     * Este hilo se ejecuta durante una conexión con un dispositivo remoto.
+     * Maneja todas las transmisiones entrantes y salientes.
      */
     private class ConnectedThread extends Thread {
         private final Socket mmSocket;
@@ -171,7 +184,7 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
 
-            // Get the BluetoothSocket input and output streams
+            // Creamos los streams de entrada y salida de la conexion wifi
             try {
                 tmpIn = mmSocket.getInputStream();
                 tmpOut = mmSocket.getOutputStream();
@@ -188,7 +201,7 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
             byte[] buffer = new byte[1024];
             int bytes;
 
-            // Keep listening to the InputStream while connected
+            // Sigue escuchando el InputStream mientras está conectado
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -196,10 +209,10 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
             }
             while (mState == STATE_CONNECTED) {
                 try {
-                    // Read from the InputStream
+                    // Leemos del InputStream
                     bytes = mmInStream.read(buffer);
 
-                    // Send the obtained bytes to the UI Activity
+                    // Mandamos los bytes obtenidos del escaner wifi al UI Activity
                     mHandler.obtainMessage(Constants.MESSAGE_READ, bytes, -1, buffer)
                             .sendToTarget();
                     buffer = new byte[1024]; // Una vez mandado a la cola de mensajes del hilo para ser procesado, borramos el buffer
@@ -212,15 +225,14 @@ public class WifiService extends AsyncTask<Void, Void, Void>{
         }
 
         /**
-         * Write to the connected OutStream.
-         *
-         * @param buffer The bytes to write
+         * Escribe en en el OutStream abierto.
+         * @param buffer Los bytes a escribir
          */
         public void write(byte[] buffer) {
             try {
                 mmOutStream.write(buffer);
 
-                // Share the sent message back to the UI Activity
+                // Compartir el mensaje enviado de nuevo a la actividad de la interfaz de usuario
                 mHandler.obtainMessage(Constants.MESSAGE_WRITE, -1, -1, buffer)
                         .sendToTarget();
             } catch (IOException e) {

@@ -33,10 +33,6 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationListener;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
 import es.bitaria.obdii_analyzer.dataStructures.GPSData;
 import es.bitaria.obdii_analyzer.R;
 

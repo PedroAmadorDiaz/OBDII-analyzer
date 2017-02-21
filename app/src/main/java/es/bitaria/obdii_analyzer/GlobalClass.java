@@ -15,12 +15,8 @@
 package es.bitaria.obdii_analyzer;
 
 import android.content.Context;
-
 import com.github.mikephil.charting.data.Entry;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import es.bitaria.obdii_analyzer.dataStructures.GPSData;
 import es.bitaria.obdii_analyzer.dataStructures.IMUData;
 import es.bitaria.obdii_analyzer.dataStructures.OBDData;

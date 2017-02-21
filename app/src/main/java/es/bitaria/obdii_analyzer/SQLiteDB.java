@@ -17,7 +17,6 @@ package es.bitaria.obdii_analyzer;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Environment;
 
 /**
  * Creado por Pedro Amador Diaz el 08/01/2017.

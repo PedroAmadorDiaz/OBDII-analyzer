@@ -19,13 +19,10 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.io.File;
 import java.util.List;
 import es.bitaria.obdii_analyzer.dataStructures.FileData;

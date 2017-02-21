@@ -33,7 +33,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.os.PowerManager;
 import java.util.ArrayList;
-
 import es.bitaria.obdii_analyzer.Communications.BluetoothChatService;
 import es.bitaria.obdii_analyzer.dataStructures.OBDData;
 import es.bitaria.obdii_analyzer.threads.GPS;

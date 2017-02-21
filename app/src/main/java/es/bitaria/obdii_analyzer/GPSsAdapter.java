@@ -45,7 +45,7 @@ public class GPSsAdapter extends ArrayAdapter<Location> {
 
         // Setup
         holder.name.setText(location.name);
-        holder.value.setText(Float.toString(location.value));
+        holder.value.setText(String.format("%.3f", location.value));
         holder.unit.setText(location.unit);
 
         return convertView;

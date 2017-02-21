@@ -46,7 +46,7 @@ public class PIDsAdapter extends ArrayAdapter<PID> {
 
         // Setup
         holder.name.setText(pid.name);
-        holder.value.setText(Float.toString(pid.value));
+        holder.value.setText(String.format("%.2f", pid.value));
         holder.unit.setText(pid.unit);
 
         return convertView;

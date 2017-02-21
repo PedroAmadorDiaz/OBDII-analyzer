@@ -178,8 +178,9 @@ public class OBDChart extends Fragment {
         builder.setTitle(R.string.choose_sensors).setSingleChoiceItems(items, selected, new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which){
-                    GlobalClass.mPIDs.get(selected).selected = false;
-                    GlobalClass.mPIDs.get(which).selected = true;
+                for(int index = 0; index < GlobalClass.mPIDs.size();index++)
+                    GlobalClass.mPIDs.get(index).selected = false;
+                GlobalClass.mPIDs.get(which).selected = true;
 
                      // Redibuja la grafica
                     if(globalVariable.replay) {

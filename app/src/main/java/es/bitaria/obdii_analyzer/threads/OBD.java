@@ -256,25 +256,25 @@ public class OBD extends Thread{
                             }
                             if (tmpmsg.contains("41"+globalVariable.mPIDs.get(0).id)) {
                                 obdval = Integer.parseInt(msg.substring(4, 6), 16);
-                                globalVariable.mPIDs.get(0).value = (obdval*100)/255;
+                                globalVariable.mPIDs.get(0).value = ((float)obdval*100f)/255f;
                             } else if (tmpmsg.equals("41"+globalVariable.mPIDs.get(1).id)) {
                                 obdval = Integer.parseInt(msg.substring(4, 6), 16);
-                                globalVariable.mPIDs.get(1).value = obdval-40;
+                                globalVariable.mPIDs.get(1).value = (float)obdval-40f;
                             } else if (tmpmsg.equals("41"+globalVariable.mPIDs.get(2).id)) {
                                 obdval = Integer.parseInt(msg.substring(4, 6), 16);
-                                globalVariable.mPIDs.get(2).value = obdval;
+                                globalVariable.mPIDs.get(2).value = (float)obdval;
                             } else if (tmpmsg.equals("41"+globalVariable.mPIDs.get(3).id)) {
                                 obdval = Integer.parseInt(msg.substring(4, 8), 16);
-                                globalVariable.mPIDs.get(3).value = (obdval/4);
+                                globalVariable.mPIDs.get(3).value = ((float)obdval/4f);
                             } else if (tmpmsg.equals("41"+globalVariable.mPIDs.get(4).id)) {
                                 obdval = Integer.parseInt(msg.substring(4, 6), 16);
-                                globalVariable.mPIDs.get(4).value = obdval;
+                                globalVariable.mPIDs.get(4).value = (float)obdval;
                             } else if (tmpmsg.equals("41"+globalVariable.mPIDs.get(5).id)) {
                                 obdval = Integer.parseInt(msg.substring(4, 6), 16);
-                                globalVariable.mPIDs.get(5).value = (obdval-128)/2;
+                                globalVariable.mPIDs.get(5).value = ((float)obdval-128f)/2f;
                             } else if (tmpmsg.contains("41"+globalVariable.mPIDs.get(6).id)) {
                                 obdval = Integer.parseInt(msg.substring(4, 6), 16);
-                                globalVariable.mPIDs.get(6).value = (obdval/255)*100;
+                                globalVariable.mPIDs.get(6).value = ((float)obdval*100f)/255f;
                             }
 
                             // Se manda al activity el PID recivido y ya procesado

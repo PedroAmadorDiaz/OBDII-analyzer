@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     private KineticChart kineticChart;
     private LocationChart locationChart;
     private Store store;
+    private About about;
 
     String[] name ={"Calculated engine load","Engine coolant temperature","Intake manifold Absolute","RPM","Speed","Ignition timing advance","Throttle position"};
 
@@ -342,6 +343,11 @@ public class MainActivity extends AppCompatActivity
                 store = new Store();
                 manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.content_main,store, store.getTag()).commit();
+                break;
+            case R.id.nav_about:
+                about = new About();
+                manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.content_main,about, about.getTag()).commit();
                 break;
         }
 

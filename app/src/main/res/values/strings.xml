@@ -18,6 +18,9 @@
 
     <string name="home">Home</string>
     <string name="store">Store</string>
+    <string name="about">About us</string>
+    <string name="about_text">BITARIA has continued to take on new challenges in the effort to create new products and advance technologies with the spirit of utilizing technology to help people and take care for the environment.</string>
+    <string name="policy">Privacy and use policy</string>
     <string name="charts">Charts</string>
     <string name="kinetic">Kinetic</string>
     <string name="location">Location</string>

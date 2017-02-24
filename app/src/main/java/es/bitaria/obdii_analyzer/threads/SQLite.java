@@ -109,7 +109,7 @@ public class SQLite extends Thread {
             String name = Environment.getExternalStorageDirectory().getPath()+"/OBDII-analyzer/"+ fileName +".db3";
             mSQLiteDB = new SQLiteDB(mContext,name,null, VERSION);
             mDb = mSQLiteDB.getWritableDatabase();
-            leftTime = 30; // Una nueva grabación tiene una duracion maxima de 30 segundos
+            leftTime = 600; // Una nueva grabación tiene una duracion maxima de 10 minutos
         }catch (Exception e) {
             Log.e(TAG, "ERROR: ", e);
         }

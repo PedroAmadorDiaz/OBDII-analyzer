@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.support.v4.app.Fragment;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 /**
  * Creado por Pedro Amador Diaz el 24/02/2017.
  */
@@ -18,6 +21,11 @@ public class About extends Fragment {
 
     // referencias a alementos del UI
     private View rootView;
+
+    /**
+     * The {@link Tracker} used to record screen views.
+     */
+    private Tracker mTracker;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +55,14 @@ public class About extends Fragment {
                 startActivity(intent);
             }
         });
+
+        // [START shared_tracker]
+        // Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) this.getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+        mTracker.setScreenName("About");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        // [END shared_tracker]
 
         // Inflate the layout for this fragment
         return rootView;

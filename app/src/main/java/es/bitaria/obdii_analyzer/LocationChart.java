@@ -33,6 +33,9 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 
 
@@ -53,6 +56,11 @@ public class LocationChart extends Fragment {
     // Variables empleadas en la generacion de la lista de datos de GPS
     private ArrayList<Location> mGPSs = new ArrayList<>();
     int selected = 0;
+
+    /**
+     * The {@link Tracker} used to record screen views.
+     */
+    private Tracker mTracker;
 
     public LocationChart() {
         // Required empty public constructor
@@ -82,6 +90,14 @@ public class LocationChart extends Fragment {
             if(globalVariable.mGPSs.get(index).selected)
                 lineChart0(globalVariable.mGPSs.get(index).name);
         }
+
+        // [START shared_tracker]
+        // Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) this.getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+        mTracker.setScreenName("Location");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        // [END shared_tracker]
 
         // Inflate the layout for this fragment
         return rootView;

@@ -32,6 +32,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.os.PowerManager;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 import es.bitaria.obdii_analyzer.Communications.BluetoothChatService;
 import es.bitaria.obdii_analyzer.dataStructures.OBDData;

@@ -34,6 +34,8 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import java.util.ArrayList;
 
 
@@ -54,8 +56,18 @@ public class OBDChart extends Fragment {
     private ArrayList<PID> mPIDs = new ArrayList<>();
     int selected = 0;
 
+    /**
+     * The {@link Tracker} used to record screen views.
+     */
+    private Tracker mTracker;
+
     public OBDChart() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -82,6 +94,14 @@ public class OBDChart extends Fragment {
             if(globalVariable.mPIDs.get(index).selected)
                 lineChart(globalVariable.mPIDs.get(index).name);
         }
+
+        // [START shared_tracker]
+        // Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) this.getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+        mTracker.setScreenName("OBD");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        // [END shared_tracker]
 
         // Inflate the layout for this fragment
         return rootView;

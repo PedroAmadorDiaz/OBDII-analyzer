@@ -33,6 +33,9 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 
 
@@ -49,6 +52,11 @@ public class KineticChart extends Fragment {
     // referencias a alementos del UI
     private View rootView;
     private LineChart mLineChart0, mLineChart1, mLineChart2, mLineChart3;
+
+    /**
+     * The {@link Tracker} used to record screen views.
+     */
+    private Tracker mTracker;
 
     public KineticChart() {
         // Required empty public constructor
@@ -86,6 +94,14 @@ public class KineticChart extends Fragment {
                         break;
                 }
         }
+
+        // [START shared_tracker]
+        // Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) this.getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+        mTracker.setScreenName("Kinetic");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        // [END shared_tracker]
 
         // Inflate the layout for this fragment
         return rootView;

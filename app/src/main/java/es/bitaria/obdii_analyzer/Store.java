@@ -25,6 +25,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,6 +53,11 @@ public class Store extends Fragment {
 
     // Variables empleadas en la generacion de la lista de PIDs
     private ArrayList<FileData> mFileDatas = new ArrayList<>();
+
+    /**
+     * The {@link Tracker} used to record screen views.
+     */
+    private Tracker mTracker;
 
     public Store() {
         // Required empty public constructor
@@ -99,6 +108,14 @@ public class Store extends Fragment {
                     stopRecord();
             }
         });
+
+        // [START shared_tracker]
+        // Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) this.getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+        mTracker.setScreenName("Store");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        // [END shared_tracker]
 
         return rootView;
     }

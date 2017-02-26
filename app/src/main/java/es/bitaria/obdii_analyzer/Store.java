@@ -102,10 +102,14 @@ public class Store extends Fragment {
                     return;
                 }
 
-                if (globalVariable.recording == false)
+                if (globalVariable.recording == false){
+                    // Build and send an Event.
+                    mTracker.send(new HitBuilders.EventBuilder().setCategory("store").setAction("record").build());
                     startRecod();
-                else
+                }
+                else{
                     stopRecord();
+                }
             }
         });
 
@@ -188,6 +192,7 @@ public class Store extends Fragment {
 
         // Desactivamos el flag para detener la insercion de datos en la BD
         globalVariable.recording = false;
+
         setLeftTime(0);
 
         // Se guardan los datos que queden en la memoria RAM

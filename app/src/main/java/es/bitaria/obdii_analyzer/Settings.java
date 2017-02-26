@@ -33,6 +33,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
@@ -48,6 +52,11 @@ public class Settings extends Fragment implements AdapterView.OnItemClickListene
     private ListView settingsListView;
     private ListView pairedDevicesListView;
     private String[] settings;
+
+    /**
+     * The {@link Tracker} used to record screen views.
+     */
+    private Tracker mTracker;
 
     // Constructor por defecto
     public Settings() {
@@ -68,6 +77,14 @@ public class Settings extends Fragment implements AdapterView.OnItemClickListene
 
         pairedDevicesListView = (ListView) rootView.findViewById(R.id.pairedDevicesListView);
         pairedDevicesListView.setOnItemClickListener(this);
+
+        // [START shared_tracker]
+        // Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) this.getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+        mTracker.setScreenName("Settings");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+        // [END shared_tracker]
 
         return rootView;
     }
@@ -90,6 +107,12 @@ public class Settings extends Fragment implements AdapterView.OnItemClickListene
             {
                 // Conexion con el dispositivo OBD mediante bluetooth
                 case 0:
+
+                    // Build and send an Event.
+                    mTracker.send(new HitBuilders.EventBuilder()
+                            .setCategory("device")
+                            .setAction("bluetooth")
+                            .build());
 
                     BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                     if (mBluetoothAdapter == null) {
@@ -145,6 +168,13 @@ public class Settings extends Fragment implements AdapterView.OnItemClickListene
                     break;
                 case 1:
                     /* Comienza el codigo del AlerDialog de configuración del acceso al escaner wifi*/
+
+                    // Build and send an Event.
+                    mTracker.send(new HitBuilders.EventBuilder()
+                            .setCategory("device")
+                            .setAction("wifi")
+                            .build());
+
                     LayoutInflater inflater = LayoutInflater.from(getContext());
                     View dialogview = inflater.inflate(R.layout.wifi_settings_alert, null);
                     final EditText ip = (EditText) dialogview.findViewById(R.id.editIP);

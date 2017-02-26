@@ -83,6 +83,7 @@ public class FilesAdapter extends BaseAdapter {
             holder.btDelete.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
+
                     View parentRow = (View) v.getParent();
                     ListView listView = (ListView) parentRow.getParent();
                     final int position = listView.getPositionForView(parentRow);
@@ -100,6 +101,7 @@ public class FilesAdapter extends BaseAdapter {
             holder.btPlay.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
+
                     View parentRow = (View) v.getParent();
                     ListView listView = (ListView) parentRow.getParent();
                     final int position = listView.getPositionForView(parentRow);

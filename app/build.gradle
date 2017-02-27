@@ -7,8 +7,9 @@ android {
         applicationId "es.bitaria.obdii_analyzer"
         minSdkVersion 19
         targetSdkVersion 25
-        versionName '1.0.0'
+        versionName '1.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode 1
     }
     buildTypes {
         release {
